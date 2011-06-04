@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8" />
+        <title>iStudent</title>
+		<link rel="stylesheet" href="css/jqtouch.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="img/apple/theme.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="css/jqt.scroll.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="kilo.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script type="text/javascript" src="phonegap.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/jqtouch.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jqt.scroll.js" charset="utf-8"></script>
+		<script type="text/javascript" src="kilo.js" charset="utf-8"></script>
+    </head>
+    
+   	<body>
+	
+		<div id="jqt">
+<!-------------------------------------- FIX FOR GOOGLE CHROME ----------------------------------->
+<!-------------------------------------- REMOVE IN THE MOBILE VERSION ---------------------------->
+			<nav id="tabbar">
+				<ul>
+					<li><a href="#home" class="fade current">Расписание</a></li>
+					<li><a href="#item2" class="fade">Экзамены</a></li>
+					<li><a href="#item3" class="fade">Преподаватели</a></li>
+				</ul>
+			</nav>	
+<!-------------------------------------- FIX FOR GOOGLE CHROME ----------------------------------->
+<!-------------------------------------- REMOVE IN THE MOBILE VERSION ---------------------------->
+
+
+<!-------------------------------------- Here's going the shedule section----------------------------------->
+			<div id="home" class="content current">
+				<div class="toolbar">
+					<h1>Расписание</h1>
+					<a class="button slideup" href="#about">О программе</a>
+				</div>
+				<div class="scroll">
+					<ul class="rounded">
+		                <li class="arrow"><a id="0" class="slide" href="#date">Понедельник</a></li>
+		                <li class="arrow"><a id="1" class="slide" href="#date">Вторник</a></li>
+		                <li class="arrow"><a id="2" class="slide" href="#date">Среда</a></li>
+		                <li class="arrow"><a id="3" class="slide" href="#date">Четверг</a></li>
+						<li class="arrow"><a id="4" class="slide" href="#date">Пятница</a></li>  
+		            </ul>
+				</div>
+			</div>
+			
+			
+			<div id="animdemo" class="content">
+				<div class="toolbar">
+					<h1>&nbsp;</h1>
+					<a class="back" href="#">Назад</a>
+				</div>
+				<div class="scroll">
+					<div class="info">
+			            <p>Pretty smooth, eh?</p>
+			        </div>
+				</div>
+			</div>
+       
+			
+			<div id="date" class="content">
+				<div class="toolbar">
+					<h1>Дата</h1>
+					<a class="button back" href="#">Назад</a>
+                    <a class="button add slideup" href="#createEntry">+</a>
+				</div>
+				<div class="scroll">
+                    <ul class="metal">
+						<li id="entryTemplate" class="entry" style="display:none">
+							<span class="params">
+								<em class="number">Number</em>
+								<span class="cabinet">000</span>
+							</span>
+							<span class="subject">Subject</span>
+							<div class="delete"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+<!-------------------------------------- End the shedule section----------------------------------->			
+			
+			
+			
+			
+<!-------------------------------------- Here's going the exams section----------------------------------->		
+			<div id="item2" class="content">
+				<div class="toolbar">
+					<h1>Экзамены</h1>
+				</div>
+
+				<div class="scroll">
+					<ul class="rounded">
+		                <li class="arrow"><a class="slide" href="#animdemo">Осенний модуль</a></li>
+		                <li class="arrow"><a class="slide" href="#animdemo">Зимний модуль</a></li>
+						<li class="arrow"><a class="slide" href="#animdemo">Весенний модуль</a></li>
+						<li class="arrow"><a class="slide" href="#animdemo">Летний модуль</a></li>
+		            </ul>
+				</div>
+			</div>
+<!-------------------------------------- End the exam section----------------------------------->
+
+            
+            
+<!-------------------------------------- Here's going the teacher's section----------------------------------->
+			<div id="teachers" class="content">
+				<div class="toolbar">
+					<h1>Преподаватели</h1>
+                    <a class="button add slideup" href="#createTeacher">+</a>
+				</div>
+				<div class="scroll">
+                    <ul class="rounded">
+						<li id="teachersTemplate" class="entry" style="display:none" >
+							<span class="name"></span>
+							<span class="id"></span>
+							<div class="delete"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			
+<!-------------------------------------- End the teacher's section----------------------------------->		
+			<nav id="tabbar">
+				<ul>
+					<li><a href="#home" class="fade current">Расписание</a></li>
+					<li><a href="#item2" class="fade">Экзамены</a></li>
+					<li><a href="#teachers" id="teachers_nav" class="fade">Преподаватели</a></li>
+				</ul>
+			</nav>	
+
+<!-------------------------------------- Add the entry ----------------------------------->
+		<div id="createEntry" class="content">
+            <div class="toolbar">
+                <h1>Новый предмет</h1>
+                <a class="button cancel" href="#">Отмена</a>
+            </div>
+			<div class="scroll">
+				<form method="post">
+					<ul class="rounded" >
+						<li><input type="tel" placeholder="Номер пары" name="number" id="number" value="" /></li>
+						<li><input type="text" placeholder="Предмет" name="subj" id="subj" value="" autocapitalize="off" autocorrect="off" autocomplete="off" /></li>
+						<li><input type="text" placeholder="Кабинет" name="cabinet" id="cabinet" value="" /></li>
+						<li><input class="whiteButton" type="submit" value="Сохранить" /></li>
+					</ul>
+				</form>
+			</div>
+        </div>
+<!-------------------------------------- End add the entry ----------------------------------->
+
+<!-------------------------------------- Add the entry teachers ----------------------------------->
+		<div id="createTeacher" class="content">
+            <div class="toolbar">
+                <h1>Преподаватель</h1>
+                <a class="button cancel" href="#">Отмена</a>
+            </div>
+			<div class="scroll">
+				<form method="post">
+					<ul class="rounded" >
+						<li><input type="tel" placeholder="Имя" name="name" id="name" value="" /></li>
+						<li><input type="text" placeholder="Фамилия" name="surname" id="surname" value="" autocapitalize="off" autocorrect="off" autocomplete="off" /></li>
+						<li><input class="whiteButton" type="submit" value="Сохранить" /></li>
+					</ul>
+				</form>
+			</div>
+        </div>
+<!-------------------------------------- End add the entry teachers ----------------------------------->
+
+<!-------------------------------------- Edit the entry ----------------------------------->		
+		<div id="editEntry" class="content">
+            <div class="toolbar">
+                <h1>Редактировать</h1>
+                <a class="button cancel" href="#">Отмена</a>
+            </div>
+			<div class="scroll">
+				<form method="post">
+				   <ul class="rounded" id="rounded">
+						<li><input type="tel" placeholder="Номер пары" name="number" id="number" value="" /></li>
+						<li><input type="text" placeholder="Предмет" name="subj" id="subj" value="" autocapitalize="off" autocorrect="off" autocomplete="off" /></li>
+						<li><input type="text" placeholder="Кабинет" name="cabinet" id="cabinet" value="" /></li>
+						<li><input class="whiteButton" type="submit" value="Сохранить" /></li>
+					</ul>	
+				</form>
+			</div>
+        </div>
+<!-------------------------------------- End edit the entry ----------------------------------->	
+
+<!-------------------------------------- About ----------------------------------->			
+		<div id="about" class="content">
+            <div class="toolbar">
+                <h1>О программе</h1>
+                <a class="button back" href="#">Назад</a>
+            </div>
+			<div class="scroll">
+				<form method="post">
+					<ul class="rounded">
+						<li>
+							<div class="about"><img src="img/about.png" /><h1>iStudent</h1><br />
+							version 1.1 beta </div>
+							<p class="about_text">
+							Developed by Egorov Kirill<br />
+							</p>
+						</li>
+					</ul>
+				</form>
+			</div>
+        </div>
+
+<!-------------------------------------- End about ----------------------------------->		
+		</div>
+    </body>
+</html>
