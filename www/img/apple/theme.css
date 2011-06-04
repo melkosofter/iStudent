@@ -198,6 +198,29 @@ body {
     background-repeat: no-repeat;
 }
 
+#jqt ul.rounded li  .params {
+    font-size: 16px;
+	display: block;
+    font-style: normal;
+    color: #000;
+ 
+}
+
+#jqt ul.rounded li  .tel {
+    font-size: 11px;
+	display: block;
+    font-style: normal;
+    color: #555;
+ 
+}
+
+#jqt ul.rounded li  .object {
+    font-size: 14px;
+	display: block;
+    font-style: normal;
+    color: #555;
+ 
+}
 /* #jqt ul li.arrow a { 
 /	padding: 12px 22px 12px 10px;
 }*/

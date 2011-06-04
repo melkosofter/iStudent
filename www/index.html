@@ -114,8 +114,13 @@
 				<div class="scroll">
                     <ul class="rounded">
 						<li id="teachersTemplate" class="entry" style="display:none" >
-							<span class="name"></span>
-							<span class="id"></span>
+							<span class="params">
+								<span class="name"></span>
+								<span class="id"></span>
+								<span class="middlename"></span>
+							</span>
+							<span class="object"></span>
+							<span class="tel"></span>
 							<div class="delete"></div>
 						</li>
 					</ul>
@@ -162,6 +167,9 @@
 					<ul class="rounded" >
 						<li><input type="tel" placeholder="Имя" name="name" id="name" value="" /></li>
 						<li><input type="text" placeholder="Фамилия" name="surname" id="surname" value="" autocapitalize="off" autocorrect="off" autocomplete="off" /></li>
+						<li><input type="text" placeholder="Отчество" name="middlename" id="middlename" value="" autocapitalize="off" autocorrect="off" autocomplete="off" /></li>
+						<li><input type="text" placeholder="Предмет" name="object" id="object" value="" autocapitalize="off" autocorrect="off" autocomplete="off" /></li>
+						<li><input type="text" placeholder="Телефон" name="tel" id="tel" value="" /></li>
 						<li><input class="whiteButton" type="submit" value="Сохранить" /></li>
 					</ul>
 				</form>

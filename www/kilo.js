@@ -68,7 +68,7 @@ $(document).ready(function(){
                 'id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ' + 
                 'date DATE, subj TEXT, cabinet TEXT, number INTEGER);'
             );
-			  transaction.executeSql('CREATE TABLE IF NOT EXISTS entries2 (id unique, name TEXT)');
+			  transaction.executeSql('CREATE TABLE IF NOT EXISTS teachers (id unique, name TEXT, middlename TEXT, tel TEXT, object TEXT)');
         }
     );
 	
@@ -99,12 +99,14 @@ function createTeacher() {
 function insertTeacher() {
     var id = $('#name').val();
     var name = $('#surname').val();
+    var middlename = $('#middlename').val();
+    var object = $('#object').val();
     var tel = $('#tel').val();
     db.transaction(
         function(transaction) {
             transaction.executeSql(
-                'INSERT INTO entries2 (id, name) VALUES (?, ?);', 
-                [id, name], 
+                'INSERT INTO teachers (id, name, middlename, tel, object) VALUES (?, ?, ?, ?, ?);', 
+                [id, name, middlename, tel, object], 
                 function(){
                     refreshTeachers();
                     jQT.goBack();
@@ -120,7 +122,7 @@ function refreshTeachers() {
     db.transaction(
         function(transaction) {
             transaction.executeSql(
-                'SELECT * FROM entries2 ORDER BY id;', 
+                'SELECT * FROM teachers ORDER BY id;', 
                 [], 
                 function (transaction, results) {
                     var len = results.rows.length, i;
@@ -133,6 +135,9 @@ function refreshTeachers() {
                         newEntryRow.data('entryId', row.id);
                         newEntryRow.appendTo('#teachers ul');
                         newEntryRow.find('.name').text(row.name);
+                        newEntryRow.find('.middlename').text(row.middlename);
+                        newEntryRow.find('.tel').text(row.tel);
+                        newEntryRow.find('.object').text(row.object);
                         newEntryRow.find('.id').text(row.id);
 					    newEntryRow.find('.delete').click(function(e){
                             var clickedEntry = $(this).parent();
@@ -222,7 +227,7 @@ function deleteEntryById(id) {
 function deleteEntryById2(id) {
     db.transaction(
         function(transaction) {
-            transaction.executeSql('DELETE FROM entries2 WHERE id=?;', [id], null, errorHandler);
+            transaction.executeSql('DELETE FROM teachers WHERE id=?;', [id], null, errorHandler);
         }
     );
 }
