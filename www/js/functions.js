@@ -25,29 +25,16 @@ $(document).ready(function(){
     if (typeof(PhoneGap) != 'undefined') {
         $('body > *').css({minHeight: '460px !important'});
     }
-    // $('#about, #createEntry, #dates, #home, #settings').bind('touchmove', function(e){e.preventDefault()});
     $('#createEntry form').submit(createEntry);
     $('#createTeacher form').submit(createTeacher);
+    $('#createExam form').submit(createExam);
     $('#editEntry form').submit(updateEntry);
-/*
-    $('#date').bind('pageAnimationEnd', function(e, info){
-        if (info.direction == 'in') {
-            startWatchingShake();
-        }
-    });
-    $('#date').bind('pageAnimationStart', function(e, info){
-        if (info.direction == 'out') {
-            stopWatchingShake();
-        }
-    });
-*/
 	
     $('#home li a').click(function(e){
         var dayOffset = parseInt(this.id);
         var date = new Date();
         date.setDate(date.getDate() + dayOffset - 3);
 		var month = parseInt(date.getMonth() + 1);
-        //sessionStorage.currentDate = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
         sessionStorage.currentDate =  date.getDate() + '.' + month + '.' + date.getFullYear();
         refreshEntries();
     });
@@ -55,7 +42,16 @@ $(document).ready(function(){
 	$('#teachers_nav').click(function(e){
         refreshTeachers();
     });
-
+	
+	$('#exams li a').click(function(e){
+		var dayOffset2 = parseInt(this.id);
+        var date = new Date();
+        date.setDate(date.getDate() + dayOffset2);
+		var month = parseInt(date.getMonth() + 1);
+        sessionStorage.currentDate2 =  date.getDate() + '.' + month + '.' + date.getFullYear();
+        refreshExams();
+    });
+	
     var shortName = 'istudent';
     var version = '1.0';
     var displayName = 'istudent';
@@ -69,27 +65,74 @@ $(document).ready(function(){
                 'date DATE, subj TEXT, cabinet TEXT, number INTEGER);'
             );
 			  transaction.executeSql('CREATE TABLE IF NOT EXISTS teachers (id unique, name TEXT, middlename TEXT, tel TEXT, object TEXT)');
+			  transaction.executeSql('CREATE TABLE IF NOT EXISTS exams (date DATE, id TEXT, examcab TEXT, examdate TEXT)');
         }
     );
 	
 	
 
 });
-/*
-function loadSettings() {
-    $('#age').val(localStorage.age);
-    $('#budget').val(localStorage.budget);
-    $('#weight').val(localStorage.weight);
-}
-function saveSettings() {
-    localStorage.age = $('#age').val();
-    localStorage.budget = $('#budget').val();
-    localStorage.weight = $('#weight').val();
-    jQT.goBack();
+
+function createExam() {
+    insertExam();
     return false;
 }
-*/
 
+function insertExam() {
+   var date = sessionStorage.currentDate2;
+    var id = $('#examname').val();
+    var examcab = $('#examcab').val();
+    var examdate = $('#examdate').val();
+    db.transaction(
+        function(transaction) {
+            transaction.executeSql(
+                'INSERT INTO exams (date, id, examcab, examdate) VALUES (?, ?, ?, ?);', 
+                [date, id, examcab, examdate], 
+                function(){
+                    refreshExams();
+                    jQT.goBack();
+                }, 
+                errorHandler
+            );
+        }
+    );
+}
+
+function refreshExams() {
+    var current = sessionStorage.currentDate2;
+    $('#exam ul li:gt(0)').remove();
+    db.transaction(
+        function(transaction) {
+            transaction.executeSql(
+                'SELECT * FROM exams WHERE date =? ORDER BY id;', 
+                [current], 
+               function (transaction, result) {
+                    for (var i=0; i < result.rows.length; i++) {
+                        var row = result.rows.item(i);					
+                        var newEntryRow = $('#examsTemplate').clone();
+                        newEntryRow.removeAttr('id');
+                        newEntryRow.removeAttr('style');
+                        newEntryRow.data('entryId', row.id);
+                        newEntryRow.appendTo('#exam ul');
+                        newEntryRow.find('.examname').text(row.id);
+                        newEntryRow.find('.examcab').text(row.examcab);
+                        newEntryRow.find('.examdate').text(row.examdate);
+					    newEntryRow.find('.delete').click(function(e){
+                            var clickedEntry = $(this).parent();
+                            var clickedEntryId = clickedEntry.data('entryId');
+                            deleteEntryById3(clickedEntryId);
+                            clickedEntry.slideUp();
+                            e.stopPropagation();
+                        });
+						
+                        newEntryRow.click(entryClickHandler);
+                    }
+                }, 
+                errorHandler
+            );
+        }
+    );
+}
 
 function createTeacher() {
     insertTeacher();
@@ -231,6 +274,14 @@ function deleteEntryById2(id) {
         }
     );
 }
+
+function deleteEntryById3(id) {
+    db.transaction(
+        function(transaction) {
+            transaction.executeSql('DELETE FROM exams WHERE id=?;', [id], null, errorHandler);
+        }
+    );
+}
 function errorHandler(transaction, error) {
     var message = 'Oops. Error was: "'+error.message+'" (Code '+error.code+')';
     try {
@@ -283,7 +334,6 @@ function entryClickHandler(e){
 
                     $('#saveChanges').click(function(){
                          alert('submitted');
-                        // $('#editEntry form').submit();
                         updateEntry();
                     });
                     jQT.goTo('#editEntry', 'slideup');

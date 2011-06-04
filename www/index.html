@@ -6,29 +6,15 @@
 		<link rel="stylesheet" href="css/jqtouch.css" type="text/css" media="screen" title="no title" charset="utf-8">
 		<link rel="stylesheet" href="img/apple/theme.css" type="text/css" media="screen" title="no title" charset="utf-8">
 		<link rel="stylesheet" href="css/jqt.scroll.css" type="text/css" media="screen" title="no title" charset="utf-8">
-		<link rel="stylesheet" href="kilo.css" type="text/css" media="screen" title="no title" charset="utf-8">
 		<script type="text/javascript" src="phonegap.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/jqtouch.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/jqt.scroll.js" charset="utf-8"></script>
-		<script type="text/javascript" src="kilo.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/functions.js" charset="utf-8"></script>
     </head>
     
    	<body>
-	
 		<div id="jqt">
-<!-------------------------------------- FIX FOR GOOGLE CHROME ----------------------------------->
-<!-------------------------------------- REMOVE IN THE MOBILE VERSION ---------------------------->
-			<nav id="tabbar">
-				<ul>
-					<li><a href="#home" class="fade current">Расписание</a></li>
-					<li><a href="#item2" class="fade">Экзамены</a></li>
-					<li><a href="#item3" class="fade">Преподаватели</a></li>
-				</ul>
-			</nav>	
-<!-------------------------------------- FIX FOR GOOGLE CHROME ----------------------------------->
-<!-------------------------------------- REMOVE IN THE MOBILE VERSION ---------------------------->
-
 
 <!-------------------------------------- Here's going the shedule section----------------------------------->
 			<div id="home" class="content current">
@@ -46,20 +32,6 @@
 		            </ul>
 				</div>
 			</div>
-			
-			
-			<div id="animdemo" class="content">
-				<div class="toolbar">
-					<h1>&nbsp;</h1>
-					<a class="back" href="#">Назад</a>
-				</div>
-				<div class="scroll">
-					<div class="info">
-			            <p>Pretty smooth, eh?</p>
-			        </div>
-				</div>
-			</div>
-       
 			
 			<div id="date" class="content">
 				<div class="toolbar">
@@ -82,29 +54,43 @@
 			</div>
 
 <!-------------------------------------- End the shedule section----------------------------------->			
-			
-			
-			
-			
+
 <!-------------------------------------- Here's going the exams section----------------------------------->		
-			<div id="item2" class="content">
+			<div id="exams" class="content">
 				<div class="toolbar">
 					<h1>Экзамены</h1>
 				</div>
-
 				<div class="scroll">
 					<ul class="rounded">
-		                <li class="arrow"><a class="slide" href="#animdemo">Осенний модуль</a></li>
-		                <li class="arrow"><a class="slide" href="#animdemo">Зимний модуль</a></li>
-						<li class="arrow"><a class="slide" href="#animdemo">Весенний модуль</a></li>
-						<li class="arrow"><a class="slide" href="#animdemo">Летний модуль</a></li>
+		                <li class="arrow"><a id="50" class="slide" href="#exam">Осенний модуль</a></li>
+		                <li class="arrow"><a id="60" class="slide" href="#exam">Зимний модуль</a></li>
+						<li class="arrow"><a id="70" class="slide" href="#exam">Весенний модуль</a></li>
+						<li class="arrow"><a id="80" class="slide" href="#exam">Летний модуль</a></li>
 		            </ul>
 				</div>
 			</div>
+			
+			 <div id="exam" class="content">
+				<div class="toolbar">
+					<h1>Экзамены</h1>
+					<a class="button back" href="#">Назад</a>
+                    <a class="button add slideup" href="#createExam">+</a>
+				</div>
+				<div class="scroll">
+                    <ul class="metal">
+						<li id="examsTemplate" class="entry" style="display:none">
+							<span class="params">
+								<em class="examcab">Number</em>
+								<span class="examdate">Subject</span>
+							</span>
+							<span class="examname">Subject</span>
+							<div class="delete"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
 <!-------------------------------------- End the exam section----------------------------------->
-
-            
-            
+ 
 <!-------------------------------------- Here's going the teacher's section----------------------------------->
 			<div id="teachers" class="content">
 				<div class="toolbar">
@@ -126,13 +112,12 @@
 					</ul>
 				</div>
 			</div>
-			
-			
 <!-------------------------------------- End the teacher's section----------------------------------->		
+
 			<nav id="tabbar">
 				<ul>
 					<li><a href="#home" class="fade current">Расписание</a></li>
-					<li><a href="#item2" class="fade">Экзамены</a></li>
+					<li><a href="#exams" class="fade">Экзамены</a></li>
 					<li><a href="#teachers" id="teachers_nav" class="fade">Преподаватели</a></li>
 				</ul>
 			</nav>	
@@ -156,6 +141,25 @@
         </div>
 <!-------------------------------------- End add the entry ----------------------------------->
 
+<!-------------------------------------- Add the exam ----------------------------------->
+		<div id="createExam" class="content">
+            <div class="toolbar">
+                <h1>Новый экзамен</h1>
+                <a class="button cancel" href="#">Отмена</a>
+            </div>
+			<div class="scroll">
+				<form method="post">
+					<ul class="rounded" >
+						<li><input type="text" placeholder="Предмет" name="examname" id="examname" value="" /></li>
+						<li><input type="text" placeholder="Дата" name="examdate" id="examdate" value="" /></li>
+						<li><input type="text" placeholder="Кабинет" name="examcab" id="examcab" value="" /></li>
+						<li><input class="whiteButton" type="submit" value="Сохранить" /></li>
+					</ul>
+				</form>
+			</div>
+        </div>
+<!-------------------------------------- End add the exam ----------------------------------->
+
 <!-------------------------------------- Add the entry teachers ----------------------------------->
 		<div id="createTeacher" class="content">
             <div class="toolbar">
@@ -165,7 +169,7 @@
 			<div class="scroll">
 				<form method="post">
 					<ul class="rounded" >
-						<li><input type="tel" placeholder="Имя" name="name" id="name" value="" /></li>
+						<li><input type="text" placeholder="Имя" name="name" id="name" value="" /></li>
 						<li><input type="text" placeholder="Фамилия" name="surname" id="surname" value="" autocapitalize="off" autocorrect="off" autocomplete="off" /></li>
 						<li><input type="text" placeholder="Отчество" name="middlename" id="middlename" value="" autocapitalize="off" autocorrect="off" autocomplete="off" /></li>
 						<li><input type="text" placeholder="Предмет" name="object" id="object" value="" autocapitalize="off" autocorrect="off" autocomplete="off" /></li>
@@ -216,7 +220,6 @@
 				</form>
 			</div>
         </div>
-
 <!-------------------------------------- End about ----------------------------------->		
 		</div>
     </body>

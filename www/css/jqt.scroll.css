@@ -97,11 +97,11 @@ div.content {
 	background: url('../img/icons/calendar_a.png') no-repeat !important;
 }
 
-#tabbar a[href='#item2']:before {
+#tabbar a[href='#exams']:before {
 	background: url('../img/icons/exams.png') no-repeat;
 }
 
-#tabbar a.current[href='#item2']:before {
+#tabbar a.current[href='#exams']:before {
 	background: url('../img/icons/exams_a.png') no-repeat;
 }
 
@@ -180,5 +180,47 @@ div.content {
 	background: rgba(0, 0, 0, 0.5);
 /**/
 }
+
+#date ul li {
+    position: relative;
+}
+
+#exam ul li {
+    position: relative;
+}
+
+#teachers ul li{
+    position: relative;
+}
+
+#date ul li .delete{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+	width: 24px;
+	height: 24px;
+    background: url(../img/apple/img/delete.png);
+}
+#exam ul li .delete{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+	width: 24px;
+	height: 24px;
+    background: url(../img/apple/img/delete.png);
+}
+
+#teachers ul li .delete{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+	width: 24px;
+	height: 24px;
+    background: url(../img/apple/img/delete.png);
+}
+
+.about {width: 128px; margin: 0 auto;}
+.about_text {font-size: 14px; }
+#create {font-size:55px;}
 
 

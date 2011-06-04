@@ -825,7 +825,7 @@ ul.metal li small {
  
 }
 
-#jqt ul.metal li  .number {
+#jqt ul.metal li  .number,.examcab {
 	font-style: normal;
 	padding:1px 6px;
 	width:20px;
@@ -835,14 +835,14 @@ ul.metal li small {
 	margin-right: 4px;
 }
 
-#jqt ul.metal li  .cabinet {
+#jqt ul.metal li  .cabinet,.examdate {
 	font-style: normal;
 	padding:1px 6px;
 	color: #666;
 	border-left: 1px solid rgba(15, 119, 178, 1);
 }
 
-#jqt ul.metal li  .subject {
+#jqt ul.metal li  .subject,.examname {
 display: block;
 	font-style: normal;
 	color: #333;
@@ -850,9 +850,6 @@ display: block;
 	line-height: normal;
 }
 
-#jqt ul.metal li .subject {
-    font-size: 14px;
-}
 
 #jqt ul.metal li .active {
     color: rgb(0,0,0);
