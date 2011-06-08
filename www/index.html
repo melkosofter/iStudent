@@ -5,11 +5,11 @@
         <title>iStudent</title>
 		<link rel="stylesheet" href="css/jqtouch.css" type="text/css" media="screen" title="no title" charset="utf-8">
 		<link rel="stylesheet" href="img/apple/theme.css" type="text/css" media="screen" title="no title" charset="utf-8">
-		<link rel="stylesheet" href="css/jqt.scroll.css" type="text/css" media="screen" title="no title" charset="utf-8">
-		<script type="text/javascript" src="phonegap.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="css/jqtscroll.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
         <script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/jqtouch.js" charset="utf-8"></script>
-		<script type="text/javascript" src="js/jqt.scroll.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jqtscroll.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/functions.js" charset="utf-8"></script>
     </head>
     
@@ -20,7 +20,7 @@
 			<div id="home" class="content current">
 				<div class="toolbar">
 					<h1>Расписание</h1>
-					<a class="button slideup" href="#about">О программе</a>
+					<a class="button slideup" href="#about">About</a>
 				</div>
 				<div class="scroll">
 					<ul class="rounded">
@@ -114,13 +114,7 @@
 			</div>
 <!-------------------------------------- End the teacher's section----------------------------------->		
 
-			<nav id="tabbar">
-				<ul>
-					<li><a href="#home" class="fade current">Расписание</a></li>
-					<li><a href="#exams" class="fade">Экзамены</a></li>
-					<li><a href="#teachers" id="teachers_nav" class="fade">Преподаватели</a></li>
-				</ul>
-			</nav>	
+			
 
 <!-------------------------------------- Add the entry ----------------------------------->
 		<div id="createEntry" class="content">
@@ -163,7 +157,7 @@
 <!-------------------------------------- Add the entry teachers ----------------------------------->
 		<div id="createTeacher" class="content">
             <div class="toolbar">
-                <h1>Преподаватель</h1>
+                <h1>Новый преподаватель</h1>
                 <a class="button cancel" href="#">Отмена</a>
             </div>
 			<div class="scroll">
@@ -209,18 +203,30 @@
 			<div class="scroll">
 				<form method="post">
 					<ul class="rounded">
-						<li>
-							<div class="about"><img src="img/about.png" /><h1>iStudent</h1><br />
-							version 1.1 beta </div>
-							<p class="about_text">
-							Developed by Egorov Kirill<br />
+						<li class="about">
+							<img src="img/about.png" />
+							<div class="about_text">
+								<div class="appname">iStudent</div>
+								<div class="vers">Версия 1.1 (beta)</div>
+								<span>
+								Copyright &copy; 2011 X-Hunter,<br />
+								Все права защищены
+								</span>
+							</div>
 							</p>
 						</li>
 					</ul>
 				</form>
 			</div>
         </div>
-<!-------------------------------------- End about ----------------------------------->		
+<!-------------------------------------- End about ----------------------------------->	
+            <nav id="tabbar">
+				<ul>
+					<li><a href="#home" class="fade current">Расписание</a></li>
+					<li><a href="#exams" class="fade">Экзамены</a></li>
+					<li><a href="#teachers" id="teachers_nav" class="fade">Преподаватели</a></li>
+				</ul>
+			</nav>	
 		</div>
     </body>
 </html>

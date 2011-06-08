@@ -165,7 +165,7 @@ function refreshTeachers() {
     db.transaction(
         function(transaction) {
             transaction.executeSql(
-                'SELECT * FROM teachers ORDER BY id;', 
+                'SELECT * FROM teachers ORDER BY name;', 
                 [], 
                 function (transaction, results) {
                     var len = results.rows.length, i;

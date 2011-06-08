@@ -47,9 +47,9 @@ body {
     color: #fff;
 }
 
-#jqt.landscape .toolbar > h1 {
-    margin-left: -125px;
-    width: 250px;
+@media screen and (min-width: 321px)
+{
+	#jqt .toolbar > h1 {margin-left: -125px; width: 250px;}
 }
 
 #jqt .button, #jqt .back, #jqt .cancel, #jqt .add {
@@ -768,7 +768,7 @@ ul.metal li small {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     margin: 0;
     -webkit-border-radius: 5px;
-    background: #fff url(img/on_off.png) 0 0 no-repeat;
+    background: #fff url(img/onoff.png) 0 0 no-repeat;
     height: 27px;
     overflow: hidden;
     width: 149px;

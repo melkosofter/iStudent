@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  iStudent
 //
-//  Created by X-Hunter on 18.05.11.
+//  Created by X-Hunter on 05.06.11.
 //  Copyright Flux 2011. All rights reserved.
 //
 
@@ -14,7 +14,16 @@
 #endif
 
 @interface AppDelegate : PhoneGapDelegate {
+
+	NSString* invokeString;
 }
+
+// invoke string is passed to your app on launch, this is only valid if you 
+// edit iStudent.plist to add a protocol
+// a simple tutorial can be found here : 
+// http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+
+@property (copy)  NSString* invokeString;
 
 @end
 

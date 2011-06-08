@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  iStudent
 //
-//  Created by X-Hunter on 18.05.11.
+//  Created by X-Hunter on 05.06.11.
 //  Copyright Flux 2011. All rights reserved.
 //
 
@@ -15,6 +15,8 @@
 
 @implementation AppDelegate
 
+@synthesize invokeString;
+
 - (id) init
 {	
 	/** If you need to do any extra app-specific initialization, you can do it here
@@ -24,11 +26,31 @@
 }
 
 /**
- * This is main kick off after the app inits, the views and Settings are setup here.
+ * This is main kick off after the app inits, the views and Settings are setup here. (preferred - iOS4 and up)
  */
-- (void)applicationDidFinishLaunching:(UIApplication *)application
-{	
-	[ super applicationDidFinishLaunching:application ];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+	
+	NSArray *keyArray = [launchOptions allKeys];
+	if ([launchOptions objectForKey:[keyArray objectAtIndex:0]]!=nil) 
+	{
+		NSURL *url = [launchOptions objectForKey:[keyArray objectAtIndex:0]];
+		self.invokeString = [url absoluteString];
+		NSLog(@"iStudent launchOptions = %@",url);
+	}
+	
+	return [super application:application didFinishLaunchingWithOptions:launchOptions];
+}
+
+// this happens while we are running ( in the background, or from within our own app )
+// only valid if iStudent.plist specifies a protocol to handle
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
+{
+	// Do something with the url here
+	NSString* jsString = [NSString stringWithFormat:@"handleOpenURL(\"%@\");", url];
+	[webView stringByEvaluatingJavaScriptFromString:jsString];
+	
+	return YES;
 }
 
 -(id) getCommandInstance:(NSString*)className
@@ -44,6 +66,13 @@
  */
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView 
 {
+	// only valid if iStudent.plist specifies a protocol to handle
+	if(self.invokeString)
+	{
+		// this is passed before the deviceready event is fired, so you can access it in js when you receive deviceready
+		NSString* jsString = [NSString stringWithFormat:@"var invokeString = \"%@\";", self.invokeString];
+		[theWebView stringByEvaluatingJavaScriptFromString:jsString];
+	}
 	return [ super webViewDidFinishLoad:theWebView ];
 }
 
@@ -54,7 +83,7 @@
 
 /**
  * Fail Loading With Error
- * Error - If the webpage failed to load display an error with the reson.
+ * Error - If the webpage failed to load display an error with the reason.
  */
 - (void)webView:(UIWebView *)theWebView didFailLoadWithError:(NSError *)error 
 {

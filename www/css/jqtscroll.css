@@ -1,0 +1,229 @@
+
+/* Copyright (c) 2011 Kirill Egorov */
+
+body {
+	height: 100%
+}
+#jqt {
+	height: 100%
+}
+
+div.content {
+	height: 100%;
+	-webkit-box-orient: vertical;
+	-webkit-box-pack: justify
+}
+#jqt > div.current {
+	display: -webkit-box!important
+}
+.scroll {
+	-webkit-box-flex: 1;
+	overflow: hidden;
+	margin-bottom: 49px;
+}
+
+
+#tabbar {
+	display: -webkit-box;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 48px;
+	border-top: 1px solid #000;
+	background-image:
+	-webkit-gradient(
+		linear,
+		0 0,
+		0 100%,
+		color-stop(0.0, #2e2e2e),
+		color-stop(0.5, #151515),
+		color-stop(0.5, #000)
+	);
+}
+
+#tabbar ul,
+#tabbar li {
+	margin: 0;
+	padding: 0;
+	display: -webkit-box;
+	-webkit-box-flex: 1;
+}
+
+#tabbar a {
+	display: block;
+	-webkit-box-flex: 1;
+	margin: 2px;
+	padding: 2px!important;
+	font-size: 10px;
+	text-align: center;
+	color: #999;
+	text-decoration: none;
+	font-weight: normal;
+	letter-spacing: 1px;
+}
+
+#tabbar a.current {
+	color: #fff;
+	-webkit-border-radius: 4px;
+	background-image:
+	-webkit-gradient(
+		linear,
+		0 0,
+		0 100%,
+		color-stop(0.0, #494949),
+		color-stop(0.5, #353535),
+		color-stop(0.5, #252525)
+	);
+}
+
+#tabbar a:before {
+	display: block;
+	margin: 0 auto;
+	height: 26px;
+	position: relative;
+	width: 30px;
+	font-weight: bold;
+	font-size: 150%;
+	content: '';
+	text-shadow: 1px 1px 2px #333;
+}
+
+
+#tabbar a[href='#home']:before {
+	background: url('../img/icons/calendar.png') no-repeat !important;
+}
+
+#tabbar a.current[href='#home']:before {
+	background: url('../img/icons/calendara.png') no-repeat !important;
+}
+
+#tabbar a[href='#exams']:before {
+	background: url('../img/icons/exams.png') no-repeat;
+}
+
+#tabbar a.current[href='#exams']:before {
+	background: url('../img/icons/examsa.png') no-repeat;
+}
+
+
+#tabbar a[href='#teachers']:before {
+	background: url('../img/icons/teachers.png') no-repeat;
+}
+
+#tabbar a.current[href='#teachers']:before {
+	background: url('../img/icons/teachersa.png') no-repeat;
+}
+
+
+
+
+
+.touchScrollBars {
+	display: -webkit-box;
+	padding: 3px;
+	position: absolute;
+	width: 100%;
+	z-index: 2147483647;
+	-webkit-box-align: end;
+	-webkit-box-pack: end;
+	-webkit-box-sizing: border-box;
+}
+
+.touchScrollTrack {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.touchScrollTrackX {
+	height: 6px;
+}
+
+.touchScrollTrackY {
+	float: right;
+	width: 6px;
+}
+
+.touchScrollBarsBoth {
+	padding-bottom: 12px;
+	padding-right: 12px;
+}
+
+.touchScrollBarsBoth .touchScrollTrackX {
+	-webkit-transform: translateY(9px);
+}
+
+.touchScrollBarsBoth .touchScrollTrackY {
+	-webkit-transform: translateX(3px);
+}
+
+.touchScrollHandle {
+	border: 1px solid;
+	min-height: 4px;
+	min-width: 4px;
+	-webkit-transition-property: -webkit-transform, height, width;
+	-webkit-border-radius: 3px;
+
+	/* COLOR VARIANTS */
+/* Default */
+	border-color: rgba(255, 255, 255, 0.15);
+	background: rgba(0, 0, 0, 0.5);
+/**/
+
+/* White
+	border-color: rgba(255, 255, 255, 0.5);
+	background: rgba(255, 255, 255, 0.5);
+/**/
+
+/* Black
+	border-color: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.5);
+/**/
+}
+
+#date ul li {
+    position: relative;
+}
+
+#exam ul li {
+    position: relative;
+}
+
+#teachers ul li{
+    position: relative;
+}
+
+#date ul li .delete{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+	width: 24px;
+	height: 24px;
+    background: url(../img/apple/img/delete.png);
+}
+#exam ul li .delete{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+	width: 24px;
+	height: 24px;
+    background: url(../img/apple/img/delete.png);
+}
+
+#teachers ul li .delete{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+	width: 24px;
+	height: 24px;
+    background: url(../img/apple/img/delete.png);
+}
+
+.about {margin:0 auto; width:280px;}
+.about img {float: left; padding-right: 20px;}
+.about .appname { font-size:30px; }
+.about .vers {font-size:11px; padding-bottom:30px;}
+.about_text {font-size: 10px; }
+#create {font-size:55px;}
+
+
